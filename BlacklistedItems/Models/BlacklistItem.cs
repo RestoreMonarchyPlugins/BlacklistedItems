@@ -20,9 +20,10 @@ namespace BlacklistedItems.Models
         public bool ShouldSerializeName() => !string.IsNullOrEmpty(Name);
 
         public BlacklistItem() { }
-        public BlacklistItem(ushort itemId, bool canCraft = false, bool canSpawn = false, bool canTake = false, bool canStore = false)
+        public BlacklistItem(ushort itemId, string name, bool canCraft = false, bool canSpawn = false, bool canTake = false, bool canStore = false)
         {
             ItemId = itemId;
+            Name = name;
             CanCraft = canCraft;
             CanSpawn = canSpawn;
             CanTake = canTake;

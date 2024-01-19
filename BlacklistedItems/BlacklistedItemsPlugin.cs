@@ -47,17 +47,27 @@ namespace RestoreMonarchy.BlacklistedItems
             Logger.Log($"{Name} has been unloaded!", ConsoleColor.Yellow);
         }
 
+        internal bool HasBypassPermission(UnturnedPlayer player)
+        {
+            if (!Configuration.Instance.EnableBypassPermission)
+            {
+                return false;
+            }
+
+            return player.HasPermission(Configuration.Instance.BypassPermission);
+        }
+
         private void OnTakeItemRequested(Player player, byte x, byte y, uint instanceID, byte to_x, byte to_y, byte to_rot, byte to_page, ItemData itemData, ref bool shouldAllow)
         {
             UnturnedPlayer untPlayer = UnturnedPlayer.FromPlayer(player);
 
-            if (untPlayer.HasPermission(Configuration.Instance.BypassPermission))
-            {
-                return;
-            }
-
             if (Configuration.Instance.BlacklistItems.Where(i => !i.CanTake).Any(i => i.ItemId == itemData.item.id))
             {
+                if (HasBypassPermission(untPlayer))
+                {
+                    return;
+                }
+
                 shouldAllow = false;
                 ItemAsset asset = Assets.find(EAssetType.ITEM, itemData.item.id) as ItemAsset;
                 if (asset != null)
@@ -70,14 +80,16 @@ namespace RestoreMonarchy.BlacklistedItems
         private void OnServerSpawningItemDrop(Item item, ref Vector3 location, ref bool shouldAllow)
         {
             if (Configuration.Instance.BlacklistItems.Where(x => !x.CanSpawn).Any(x => x.ItemId == item.id))
+            {
                 shouldAllow = false;
+            }                
         }
 
         private void OnCraftBlueprintRequested(PlayerCrafting crafting, ref ushort itemID, ref byte blueprintIndex, ref bool shouldAllow)
         {
             UnturnedPlayer untPlayer = UnturnedPlayer.FromPlayer(crafting.player);
 
-            if (untPlayer.HasPermission(Configuration.Instance.BypassPermission))
+            if (HasBypassPermission(untPlayer))
             {
                 return;
             }
