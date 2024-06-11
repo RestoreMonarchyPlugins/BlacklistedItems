@@ -1,14 +1,14 @@
-## BlacklistedItems
+# BlacklistedItems
 Blacklist the items from being crafted, spawned or picked up by players.
 
-### Features
+## Features
 - **CanSpawn** - Disable item from spawning or being dropped to the ground 
 - **CanCraft** - Disable item from being crafted
 - **CanTake** - Disable item from being able to be picked up
 - **CanStore** - Disable item from being able to be stored in storage like locker
 - Optional blacklist bypass permission
 
-### Configuration
+## Configuration
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <BlacklistedItemsConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
@@ -25,7 +25,7 @@ Blacklist the items from being crafted, spawned or picked up by players.
 </BlacklistedItemsConfiguration>
 ```
 
-### Translations
+## Translations
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <Translations xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
