@@ -9,46 +9,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="Lib.Harmony" Version="2.2.2" />
-	</ItemGroup>
-
-	<ItemGroup>
-		<Reference Include="Assembly-CSharp, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-			<SpecificVersion>False</SpecificVersion>
-			<HintPath>..\lib\Assembly-CSharp.dll</HintPath>
-		</Reference>
-		<Reference Include="com.rlabrecque.steamworks.net">
-		  <HintPath>..\lib\com.rlabrecque.steamworks.net.dll</HintPath>
-		</Reference>
-		<Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-			<SpecificVersion>False</SpecificVersion>
-			<HintPath>..\lib\Newtonsoft.Json.dll</HintPath>
-		</Reference>
-		<Reference Include="Rocket.API, Version=4.9.3.4, Culture=neutral, processorArchitecture=MSIL">
-			<SpecificVersion>False</SpecificVersion>
-			<HintPath>..\lib\Rocket.API.dll</HintPath>
-		</Reference>
-		<Reference Include="Rocket.Core, Version=4.9.3.4, Culture=neutral, processorArchitecture=MSIL">
-			<SpecificVersion>False</SpecificVersion>
-			<HintPath>..\lib\Rocket.Core.dll</HintPath>
-		</Reference>
-		<Reference Include="Rocket.Unturned, Version=4.9.3.6, Culture=neutral, processorArchitecture=MSIL">
-			<SpecificVersion>False</SpecificVersion>
-			<HintPath>..\lib\Rocket.Unturned.dll</HintPath>
-		</Reference>
-		<Reference Include="SDG.NetTransport">
-			<HintPath>..\lib\SDG.NetTransport.dll</HintPath>
-		</Reference>
-		<Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-			<SpecificVersion>False</SpecificVersion>
-			<HintPath>..\lib\UnityEngine.dll</HintPath>
-		</Reference>
-		<Reference Include="UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-			<SpecificVersion>False</SpecificVersion>
-			<HintPath>..\lib\UnityEngine.CoreModule.dll</HintPath>
-		</Reference>
-		<Reference Include="UnityEngine.PhysicsModule">
-			<HintPath>..\lib\UnityEngine.PhysicsModule.dll</HintPath>
-		</Reference>
+		<PackageReference Include="RestoreMonarchy.RocketRedist" Version="3.*" ExcludeAssets="runtime" />
 	</ItemGroup>
 
 </Project>
