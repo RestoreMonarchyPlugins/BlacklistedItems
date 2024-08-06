@@ -34,15 +34,17 @@ namespace RestoreMonarchy.BlacklistedItems
             ItemManager.onServerSpawningItemDrop += OnServerSpawningItemDrop;
             ItemManager.onTakeItemRequested += OnTakeItemRequested;
             PlayerCrafting.onCraftBlueprintRequested += OnCraftBlueprintRequested;
+            VehicleManager.onEnterVehicleRequested += OnEnterVehicleRequested;
 
             Logger.Log($"{Name} {Assembly.GetName().Version} has been loadded!", ConsoleColor.Yellow);
         }
 
         protected override void Unload()
-        {
+        { 
             ItemManager.onServerSpawningItemDrop -= OnServerSpawningItemDrop;
             ItemManager.onTakeItemRequested -= OnTakeItemRequested;
             PlayerCrafting.onCraftBlueprintRequested -= OnCraftBlueprintRequested;
+            VehicleManager.onEnterVehicleRequested -= OnEnterVehicleRequested;
 
             Logger.Log($"{Name} has been unloaded!", ConsoleColor.Yellow);
         }
@@ -113,6 +115,21 @@ namespace RestoreMonarchy.BlacklistedItems
 
                     return;
                 }
+            }
+        }
+
+        private void OnEnterVehicleRequested(Player player, InteractableVehicle vehicle, ref bool shouldAllow)
+        {
+            UnturnedPlayer untPlayer = UnturnedPlayer.FromPlayer(player);
+
+            if (Configuration.Instance.BlacklistVehicles.Where(x => !x.CanEnter).Any(x => x.VehicleId == vehicle.id))
+            {
+                if (HasBypassPermission(untPlayer))
+                {
+                    return;
+                }
+
+                shouldAllow = false;
             }
         }
 
